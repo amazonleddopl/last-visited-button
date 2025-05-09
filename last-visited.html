@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<script>
+  const sessionId = localStorage.getItem('sessionId');
+
+  fetch('https://script.google.com/macros/s/AKfycbw4rN-GahH7A-u-tgkQPkuw6Fref2Z5czcq-IrvL3wAb7S401iGo1UwlCkHX5_0oOoOPA/exec?sessionId=' + sessionId)
+    .then(res => res.text())
+    .then(url => {
+      if (url && url !== window.location.href) {
+        const btn = document.createElement('a');
+        btn.href = url;
+        btn.innerHTML = '<button style="padding:10px 20px; font-size: 16px;">Wróć do ostatniej strony</button>';
+        document.body.appendChild(btn);
+      }
+    });
+</script>
+</body>
+</html>
